@@ -13,17 +13,24 @@ public class SpawnManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverKillCounter;
 
+    StoredEnergy storedEnergy;
+
     int amountToSpawn = 1;
     int checkCount;
     int killCount;
 
     bool spawning;
 
-    bool gameover;
+    public static bool gameover;
 
     List<GameObject> spawnObjects = new List<GameObject>();
 
     Coroutine spawn;
+
+    private void Start()
+    {
+        storedEnergy = GetComponent<StoredEnergy>();
+    }
 
     void Update()
     {
@@ -84,6 +91,8 @@ public class SpawnManager : MonoBehaviour
             checkCount = 0;
             amountToSpawn++;
         }
+
+        storedEnergy.StoreEnergy();
     }
 
     public void GameOver()
