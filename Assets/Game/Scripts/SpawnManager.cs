@@ -29,6 +29,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        gameover = false;
         storedEnergy = GetComponent<StoredEnergy>();
     }
 
