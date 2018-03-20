@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     public Text killCounter;
     public GameObject gameOverPanel;
     public Text gameOverKillCounter;
+    public Text highScoreText;
 
     StoredEnergy storedEnergy;
 
@@ -26,9 +27,11 @@ public class SpawnManager : MonoBehaviour
     List<GameObject> spawnObjects = new List<GameObject>();
 
     Coroutine spawn;
+    int highScore;
 
     private void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore");
         gameover = false;
         storedEnergy = GetComponent<StoredEnergy>();
     }
@@ -98,6 +101,7 @@ public class SpawnManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (gameover) return;
         gameover = true;
 
         foreach (GameObject go in spawnObjects)
@@ -107,5 +111,23 @@ public class SpawnManager : MonoBehaviour
 
         gameOverPanel.SetActive(true);
         gameOverKillCounter.text = "Kill Counter: " + killCount;
+
+        if(killCount > highScore)
+        {
+            highScore = killCount;
+            StartCoroutine(NewHighScore());
+        }
+        else
+        {
+            highScoreText.text = "High Score: " + highScore;
+        }
+    }
+
+    IEnumerator NewHighScore()
+    {
+        highScoreText.text = "New High Score!";
+        yield return new WaitForSeconds(2);
+        highScoreText.text = "High Score: " + highScore;
+        PlayerPrefs.SetInt("HighScore", highScore);
     }
 }
