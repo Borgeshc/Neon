@@ -7,6 +7,7 @@ public class StoredEnergy : MonoBehaviour
     public GameObject storedEnergy;
     public GameObject[] storedEnergyMarkers;
     public GameObject[] storedEnergySpawnLocations;
+    public GameObject[] storedEnergyMuzzleFlashes;
 
     int storedEnergyCount;
     
@@ -25,6 +26,7 @@ public class StoredEnergy : MonoBehaviour
             for(int i = 0; i < storedEnergyCount; i++)
             {
                 storedEnergyMarkers[i].SetActive(false);
+                storedEnergyMuzzleFlashes[i].SetActive(true);
                 Instantiate(storedEnergy, storedEnergySpawnLocations[i].transform.position, storedEnergySpawnLocations[i].transform.rotation);
             }
             storedEnergyCount = 0;

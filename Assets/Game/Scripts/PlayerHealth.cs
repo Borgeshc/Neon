@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     public Text livesText;
 
+    public GameObject explosion;
+
     SpawnManager spawnManager;
 
     private void Start()
@@ -18,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TookDamage(int damage)
     {
+        if (Shield.shieldActive) return;
+        Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
         livesText.text = "Lives: " + health;
 
