@@ -54,7 +54,7 @@ MonoBehaviour:
     m_Settings:
       reflection:
         blendType: 0
-        reflectionQuality: 2
+        reflectionQuality: 0
         maxDistance: 100
         iterationCount: 256
         stepSize: 3
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.15
+        intensity: 0.25
         threshold: 1.1
         softKnee: 0.45
         radius: 4
@@ -305,7 +305,7 @@ MonoBehaviour:
       opacity: 1
       rounded: 0
   dithering:
-    m_Enabled: 0
+    m_Enabled: 1
   monitors:
     currentMonitorID: 0
     refreshOnPlay: 0

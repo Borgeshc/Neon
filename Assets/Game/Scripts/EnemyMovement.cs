@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float speed;
+    public float rotationSpeed = 20f;
     Transform player;
 
     private void Start()
@@ -16,7 +17,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!player) return;
         Vector3 targetPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.LookAt(targetPosition);
+
+        var rotation = Quaternion.LookRotation(targetPosition - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
         transform.position += transform.forward * speed * Time.deltaTime;
     }
