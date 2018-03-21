@@ -13,6 +13,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Text gameOverKillCounter;
     public Text highScoreText;
+    public AudioSource highScoreSource;
 
     StoredEnergy storedEnergy;
 
@@ -38,6 +39,12 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha4) && Input.GetKeyDown(KeyCode.Alpha5) && Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            PlayerPrefs.SetInt("HighScore", 0);
+            print("High Score Reset");
+        }
+
         if(gameover)
         {
             if (spawn != null)
@@ -125,6 +132,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator NewHighScore()
     {
+        highScoreSource.Play();
         highScoreText.text = "New High Score!";
         yield return new WaitForSeconds(2);
         highScoreText.text = "High Score: " + highScore;

@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject explosion;
 
     SpawnManager spawnManager;
+    public AudioSource playerHit;
 
     private void Start()
     {
@@ -21,6 +22,15 @@ public class PlayerHealth : MonoBehaviour
     public void TookDamage(int damage)
     {
         if (Shield.shieldActive) return;
+        playerHit.Play();
+        StartCoroutine(DelayHit(damage));
+
+    }
+
+    IEnumerator DelayHit(int damage)
+    {
+        yield return new WaitForSeconds(.05f);
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
         livesText.text = "Lives: " + health;

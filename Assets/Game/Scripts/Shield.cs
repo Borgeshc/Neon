@@ -32,7 +32,7 @@ public class Shield : MonoBehaviour
 
     IEnumerator ShieldActive()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         shieldActive = false;
         shieldAnimator.SetBool("Grow", false);
         yield return new WaitForSeconds(.5f);
