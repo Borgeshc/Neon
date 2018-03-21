@@ -45,9 +45,8 @@ public class Movement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit, groundMask))
         {
-            Vector3 lookAtPosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            gun.transform.LookAt(lookAtPosition);
+            Vector3 lookAtPosition = new Vector3(hit.point.x, gun.transform.position.y, hit.point.z);
+             gun.transform.LookAt(lookAtPosition);
         }
     }
-
 }
