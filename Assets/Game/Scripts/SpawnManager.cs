@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject objectToSpawn;
+    public ObjectPooling objectToSpawn;
     public float spawnFrequency;
     public int spawnOffset;
     public int killsBeforeIncrease;
@@ -78,8 +78,18 @@ public class SpawnManager : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(randomX, 0, randomZ);
 
-           GameObject newObject = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
-            spawnObjects.Add(newObject);
+            GameObject obj = objectToSpawn.GetPooledObject();
+
+            if (obj == null)
+            {
+                yield break;
+            }
+
+            obj.transform.position = spawnPosition;
+            obj.transform.rotation = Quaternion.identity;
+            obj.SetActive(true);
+
+            spawnObjects.Add(obj);
         }
         yield return new WaitForSeconds(spawnFrequency);
         spawning = false;

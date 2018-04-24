@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 499600}
   - component: {fileID: 8285160}
   m_Layer: 0
-  m_Name: BlueSphereImpact
+  m_Name: Projectile Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7234,6 +7234,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key1.a
       value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 4.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.1000
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.minScalar

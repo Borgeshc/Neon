@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    public GameObject projectile;
+    public ObjectPooling projectile;
     public Transform spawnPosition;
     public GameObject muzzleFlash;
 
@@ -13,7 +13,17 @@ public class Shooting : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             muzzleFlash.SetActive(true);
-            Instantiate(projectile, spawnPosition.position, spawnPosition.rotation);
+
+            GameObject obj = projectile.GetPooledObject();
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            obj.transform.position = spawnPosition.position;
+            obj.transform.rotation = spawnPosition.rotation;
+            obj.SetActive(true);
         }
     }
 }

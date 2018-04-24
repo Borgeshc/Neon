@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     public float speed;
-    public GameObject impact;
 
 	void Update ()
     {
@@ -30,7 +29,18 @@ public class Projectile : MonoBehaviour
     void DestroyProjectile()
     {
         CameraShaker.Instance.ShakeOnce(1f, 1f, .025f, .25f);
-        Instantiate(impact, transform.position, transform.rotation);
-        Destroy(gameObject);
+
+        GameObject obj = PoolInstances.impactPool.GetPooledObject();
+
+        if (obj == null)
+        {
+            return;
+        }
+
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.SetActive(true);
+
+        gameObject.SetActive(false);
     }
 }

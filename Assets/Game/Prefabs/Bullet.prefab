@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4564018362839924}
   - component: {fileID: 114545220992401942}
   - component: {fileID: 136469575012452744}
-  - component: {fileID: 114874737984250824}
+  - component: {fileID: 114308945374910248}
   - component: {fileID: 82067359261426788}
   m_Layer: 0
   m_Name: Bullet
@@ -560,6 +560,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114308945374910248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519900534536822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cedc0388547045488beedc704bbdffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableAfter: 5
 --- !u!114 &114545220992401942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -574,18 +586,6 @@ MonoBehaviour:
   damage: 1
   speed: 10
   impact: {fileID: 106912, guid: 2dbac925fd8c06a42b231b24f70615e0, type: 2}
---- !u!114 &114874737984250824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1519900534536822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d5ffbace5a3e741a9daac31e65ce29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyAfter: 5
 --- !u!136 &136469575012452744
 CapsuleCollider:
   m_ObjectHideFlags: 1

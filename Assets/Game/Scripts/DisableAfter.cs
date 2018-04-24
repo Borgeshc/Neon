@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DisableAfter : MonoBehaviour
 {
+    public float disableAfter = .25f;
     private void OnEnable()
     {
         StartCoroutine(Disable());
@@ -11,7 +12,7 @@ public class DisableAfter : MonoBehaviour
 
     IEnumerator Disable()
     {
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(disableAfter);
         gameObject.SetActive(false);
     }
 }

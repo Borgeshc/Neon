@@ -6,11 +6,15 @@ using EZCameraShake;
 public class Health : MonoBehaviour
 {
     public int health;
-    public GameObject explosion;
 
     SpawnManager spawnManager;
 
     private void Start()
+    {
+        spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
+    }
+
+    private void OnEnable()
     {
         spawnManager = GameObject.Find("GameManager").GetComponent<SpawnManager>();
     }
@@ -27,9 +31,19 @@ public class Health : MonoBehaviour
 
     void Died()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject obj = PoolInstances.enemyExplosionPool.GetPooledObject();
+
+        if (obj == null)
+        {
+            return;
+        }
+
+        obj.transform.position = transform.position;
+        obj.transform.rotation = Quaternion.identity;
+        obj.SetActive(true);
+
         CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1);
         spawnManager.EnemyKilled(gameObject);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
