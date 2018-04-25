@@ -20,11 +20,14 @@ public class Movement : MonoBehaviour
     Vector3 input;
     Vector3 targetRotation;
 
+    public void UpdateInput(float _horizontal, float _vertical)
+    {
+        horizontal = _horizontal;
+        vertical = _vertical;
+    }
+
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-
         transform.position += Vector3.forward * vertical * speed * Time.deltaTime;
         transform.position += Vector3.right * horizontal * speed * Time.deltaTime;
 

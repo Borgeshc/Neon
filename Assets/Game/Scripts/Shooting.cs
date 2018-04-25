@@ -8,22 +8,19 @@ public class Shooting : MonoBehaviour
     public Transform spawnPosition;
     public GameObject muzzleFlash;
 
-    private void Update()
+    public void Fire()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        muzzleFlash.SetActive(true);
+
+        GameObject obj = projectile.GetPooledObject();
+
+        if (obj == null)
         {
-            muzzleFlash.SetActive(true);
-
-            GameObject obj = projectile.GetPooledObject();
-
-            if (obj == null)
-            {
-                return;
-            }
-
-            obj.transform.position = spawnPosition.position;
-            obj.transform.rotation = spawnPosition.rotation;
-            obj.SetActive(true);
+            return;
         }
+
+        obj.transform.position = spawnPosition.position;
+        obj.transform.rotation = spawnPosition.rotation;
+        obj.SetActive(true);
     }
 }

@@ -18,29 +18,27 @@ public class StoredEnergy : MonoBehaviour
         storedEnergyCount++;
     }
 
-    private void Update()
+    public void SecondaryFire()
     {
         if (SpawnManager.gameover) return;
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+       
+        for(int i = 0; i < storedEnergyCount; i++)
         {
-            for(int i = 0; i < storedEnergyCount; i++)
+            storedEnergyMarkers[i].SetActive(false);
+            storedEnergyMuzzleFlashes[i].SetActive(true);
+            //Instantiate(storedEnergy, storedEnergySpawnLocations[i].transform.position, storedEnergySpawnLocations[i].transform.rotation);
+
+            GameObject obj = storedEnergy.GetPooledObject();
+
+            if (obj == null)
             {
-                storedEnergyMarkers[i].SetActive(false);
-                storedEnergyMuzzleFlashes[i].SetActive(true);
-                //Instantiate(storedEnergy, storedEnergySpawnLocations[i].transform.position, storedEnergySpawnLocations[i].transform.rotation);
-
-                GameObject obj = storedEnergy.GetPooledObject();
-
-                if (obj == null)
-                {
-                    return;
-                }
-
-                obj.transform.position = storedEnergySpawnLocations[i].transform.position;
-                obj.transform.rotation = storedEnergySpawnLocations[i].transform.rotation;
-                obj.SetActive(true);
+                return;
             }
-            storedEnergyCount = 0;
+
+            obj.transform.position = storedEnergySpawnLocations[i].transform.position;
+            obj.transform.rotation = storedEnergySpawnLocations[i].transform.rotation;
+            obj.SetActive(true);
         }
+        storedEnergyCount = 0;
     }
 }

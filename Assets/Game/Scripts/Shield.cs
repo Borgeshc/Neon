@@ -17,9 +17,9 @@ public class Shield : MonoBehaviour
         shieldChargeCount = shieldCharges.Length;
     }
 
-    private void Update()
+    public void ActivateShield()
     {
-        if(!shieldActive && Input.GetKeyDown(KeyCode.Space) && shieldChargeCount > 0)
+        if (!shieldActive && shieldChargeCount > 0)
         {
             shieldActive = true;
             shieldCharges[shieldChargeCount - 1].SetActive(false);
