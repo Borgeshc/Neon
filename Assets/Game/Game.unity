@@ -15887,6 +15887,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableAfter: 0.25
+--- !u!1 &748024760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 748024762}
+  - component: {fileID: 748024761}
+  m_Layer: 0
+  m_Name: StoredEnergyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &748024761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748024760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962a4e6756ce5854e81aff4f31455986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject:
+  - {fileID: 1519900534536822, guid: 3a00f33623cca7e4fa04e933cefff395, type: 2}
+  pooledAmount: 48
+  waitTime: 0.001
+  willGrow: 1
+  pooledObjects: []
+--- !u!4 &748024762
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 748024760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &774311824
 GameObject:
   m_ObjectHideFlags: 0
@@ -54503,8 +54549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e354ed3980216564f8d91c47736f2d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storedEnergy: {fileID: 1519900534536822, guid: 3a00f33623cca7e4fa04e933cefff395,
-    type: 2}
+  storedEnergy: {fileID: 748024761}
   storedEnergyMarkers:
   - {fileID: 1651814021}
   - {fileID: 424013208}
@@ -54545,6 +54590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impactPool: {fileID: 777430641}
   _enemyExplosionPool: {fileID: 329246770}
+  _enemyShieldHitExplosionPool: {fileID: 2003664674}
 --- !u!4 &1698025426 stripped
 Transform:
   m_PrefabParentObject: {fileID: 401544, guid: e23ec68000a864348a08a162a577c413, type: 2}
@@ -59119,6 +59165,52 @@ Transform:
   m_Father: {fileID: 197807870}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+--- !u!1 &2003664673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2003664675}
+  - component: {fileID: 2003664674}
+  m_Layer: 0
+  m_Name: EnemyShieldHitExplosionPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2003664674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003664673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962a4e6756ce5854e81aff4f31455986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject:
+  - {fileID: 148596, guid: 4a655ad86d1fbd648bb35a9b74bdab24, type: 2}
+  pooledAmount: 15
+  waitTime: 0.001
+  willGrow: 1
+  pooledObjects: []
+--- !u!4 &2003664675
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003664673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011836319
 GameObject:
   m_ObjectHideFlags: 0

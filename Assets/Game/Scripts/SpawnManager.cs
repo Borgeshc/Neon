@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
 
     int amountToSpawn = 1;
     int checkCount;
-    int killCount;
+    public static int killCount;
 
     bool spawning;
 
@@ -123,7 +123,7 @@ public class SpawnManager : MonoBehaviour
 
         foreach (GameObject go in spawnObjects)
         {
-            Destroy(go);
+            go.SetActive(false);
         }
 
         gameOverPanel.SetActive(true);

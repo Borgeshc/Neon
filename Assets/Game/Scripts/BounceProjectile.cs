@@ -21,6 +21,7 @@ public class BounceProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * minVelocity;
+        bounceCount = 0;
     }
 
     private void Update()
@@ -37,9 +38,15 @@ public class BounceProjectile : MonoBehaviour
     private void Bounce(Vector3 collisionNormal)
     {
         Instantiate(impact, transform.position, transform.rotation);
-        CameraShaker.Instance.ShakeOnce(1f, 1f, .025f, .25f);
-        if (bounceCount >= 3)
-            Destroy(gameObject);
+        if(SpawnManager.killCount <= 100)
+            CameraShaker.Instance.ShakeOnce(1f, 1f, .25f, .25f);
+        else if (SpawnManager.killCount <= 150)
+            CameraShaker.Instance.ShakeOnce(.5f, .5f, .125f, .125f);
+        else if(SpawnManager.killCount <= 200)
+            CameraShaker.Instance.ShakeOnce(.25f, .25f, .05f, .05f);
+
+        if (bounceCount >= 2)
+            gameObject.SetActive(false);
 
         var speed = lastFrameVelocity.magnitude;
         var direction = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);

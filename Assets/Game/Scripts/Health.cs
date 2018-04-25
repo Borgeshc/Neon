@@ -42,7 +42,13 @@ public class Health : MonoBehaviour
         obj.transform.rotation = Quaternion.identity;
         obj.SetActive(true);
 
-        CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1);
+        if (SpawnManager.killCount <= 100)
+            CameraShaker.Instance.ShakeOnce(2f, 2f, .5f, .5f);
+        else if (SpawnManager.killCount <= 150)
+            CameraShaker.Instance.ShakeOnce(.5f, .5f, .125f, .125f);
+        else if (SpawnManager.killCount <= 200)
+            CameraShaker.Instance.ShakeOnce(.25f, .25f, .05f, .05f);
+
         spawnManager.EnemyKilled(gameObject);
         gameObject.SetActive(false);
     }

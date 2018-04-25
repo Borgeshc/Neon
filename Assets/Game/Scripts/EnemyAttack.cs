@@ -5,7 +5,6 @@ using EZCameraShake;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public GameObject explosion;
     SpawnManager spawnManager;
 
     private void Start()
@@ -18,13 +17,29 @@ public class EnemyAttack : MonoBehaviour
         if(other.tag.Equals("Player"))
         {
             other.GetComponent<PlayerHealth>().TookDamage(1);
+
             if(Shield.shieldActive)
-                Instantiate(explosion, transform.position, transform.rotation);
+            {
+                GameObject obj = PoolInstances.enemyShieldHitExplosionPool.GetPooledObject();
 
-            CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1);
+                if (obj == null)
+                {
+                    return;
+                }
 
+                obj.transform.position = transform.position;
+                obj.transform.rotation = transform.rotation;
+                obj.SetActive(true);
+            }
+
+            if (SpawnManager.killCount <= 100)
+                CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1);
+            else if (SpawnManager.killCount <= 150)
+                CameraShaker.Instance.ShakeOnce(1f, 1f, .25f, .25f);
+            else if (SpawnManager.killCount <= 200)
+                CameraShaker.Instance.ShakeOnce(.25f, .25f, .05f, .05f);
             spawnManager.EnemyKilled(gameObject);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

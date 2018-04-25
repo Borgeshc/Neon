@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 54839787797101768}
   - component: {fileID: 135460246061594718}
   - component: {fileID: 82657088249705208}
+  - component: {fileID: 114222290075989748}
   m_Layer: 10
   m_Name: Bounce Bullet
   m_TagString: Untagged
@@ -532,6 +533,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114222290075989748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519900534536822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cedc0388547045488beedc704bbdffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableAfter: 7
 --- !u!114 &114436295747913904
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,7 +14,7 @@ public class Damage : MonoBehaviour
         {
             Instantiate(impact, transform.position, transform.rotation);
             other.GetComponent<Health>().TookDamage(damage);
-            Destroy(gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }
